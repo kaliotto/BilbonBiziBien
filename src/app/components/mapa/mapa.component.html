@@ -1,0 +1,35 @@
+<div class="loading" *ngIf="loading">
+  <img class="fa-spin" src="../../../assets/img/loading.png" alt="">
+</div>
+
+<div class="container" *ngIf="!loading">
+  <div class="card text-center">
+    <!-- <img class="card-img-top" src="../../../assets/img/imgdummy.jpg" alt=""> -->
+    <agm-map class="card-img-top mapa" *ngIf="!loading"
+      [latitude]="LAT_BILBAO"
+      [longitude]="LNG_BILBAO"
+      [zoom]="14">
+      <div *ngFor="let mkr of marcadores">
+        <agm-marker *ngIf="mkr.visible"
+          [markerClickable]="true"
+          [latitude]="mkr.latitud"
+          [longitude]="mkr.longitud"
+          [id]="'mkr'+mkr.id">
+          <agm-info-window>{{mkr.nombre}}</agm-info-window>
+        </agm-marker>
+      </div>
+    </agm-map>
+    <div class="card-body">
+      <h5 class="card-title">Listado de Puntos Bilbon Bizi</h5>
+        <div class="row">
+            <div class="col-md-6 list-group-item list-group-item-action listaMarcadores d-flex justify-content-between" *ngFor="let mkr of marcadores">
+              {{mkr.nombre}}
+              <label class="switch">
+                <input [checked]="mkr.visible" type="checkbox" (click)="toggleVisibility(mkr.id)">
+                <span class="slider round"></span>
+              </label>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+<div class="loading" *ngIf="loading">
+  <img class="fa-spin" src="../../../assets/img/loading.png" alt="">
+</div>
+<div id="accordion" *ngIf="!loading">
+  <div class="card" *ngFor="let puntoBiciFavs of puntosBiciFavs">
+    <div class="card-header" id="pbHeading{{puntoBiciFavs.id}}"
+    [ngClass]="{'btn-faved':favoritos.indexOf(puntoBiciFavs.id)>=0}">
+      <h5 class="mb-0">
+        <button class="btn btn-link btn-block collapsible-btn"
+        data-toggle="collapse"
+        [attr.data-target]="'#pbCollapse'+ puntoBiciFavs.id"
+        aria-expanded="true"
+        [attr.aria-controls]="'pbCollapse'+puntoBiciFavs.id">
+          <div class="row justify-content-between">
+            <div class="col-6 text-align-left">
+              <div class="numRedondo">
+                <span *ngIf="puntoBiciFavs.posicion-10<0">0</span>{{puntoBiciFavs.posicion}}
+              </div>
+              <span>{{puntoBiciFavs.nombre}}</span>
+            </div>
+            <div class="col-6 text-align-right">
+              <span class="badge badge-pill badge-success">
+                <i class="fa fa-lg fa-bicycle"></i> {{puntoBiciFavs.bicisLibres}}
+              </span>
+              <span class="badge badge-pill badge-info">
+                <i class="fa fa-lg fa-anchor"></i> {{puntoBiciFavs.anclajesLibres}}
+              </span>
+            </div>
+          </div>
+        </button>
+      </h5>
+    </div>
+
+    <div id="pbCollapse{{puntoBiciFavs.id}}"
+    class="collapse hide"
+    [attr.aria-labelledby]="'pbHeading'+puntoBiciFavs.id"
+    data-parent="#accordion">
+      <div class="card-body">
+        <div class="row justify-content-around">
+          <div class="btn" (click)="toggleFav(puntoBiciFavs.id)">
+            <div class="row justify-content-center" *ngIf="favoritos.indexOf(puntoBiciFavs.id)>=0">
+              <i class="fas fa-star faved"></i>
+            </div>
+            <div class="row justify-content-center" *ngIf="favoritos.indexOf(puntoBiciFavs.id)<0">
+              <i class="far fa-star"></i>
+            </div>
+            <div class="row justify-content-center">
+              Favorito
+            </div>
+          </div>
+          <div class="btn" [routerLink]="['/detalle', puntoBiciFavs.id]">
+            <div class="row justify-content-center">
+              <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="row justify-content-center">
+              Detalles
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" *ngFor="let puntoBiciNoFavs of puntosBiciNoFavs">
+    <div class="card-header" id="pbHeading{{puntoBiciNoFavs.id}}"
+    [ngClass]="{'btn-faved':favoritos.indexOf(puntoBiciNoFavs.id)>=0}">
+      <h5 class="mb-0">
+        <button class="btn btn-link btn-block collapsible-btn"
+        data-toggle="collapse"
+        [attr.data-target]="'#pbCollapse'+ puntoBiciNoFavs.id"
+        aria-expanded="true"
+        [attr.aria-controls]="'pbCollapse'+puntoBiciNoFavs.id">
+          <div class="row justify-content-between">
+            <div class="col-6 text-align-left">
+              <div class="numRedondo">
+                <span *ngIf="puntoBiciNoFavs.posicion-10<0">0</span>{{puntoBiciNoFavs.posicion}}
+              </div>
+              <span>{{puntoBiciNoFavs.nombre}}</span>
+            </div>
+            <div class="col-6 text-align-right">
+              <span class="badge badge-pill badge-success">
+                <i class="fa fa-lg fa-bicycle"></i> {{puntoBiciNoFavs.bicisLibres}}
+              </span>
+              <span class="badge badge-pill badge-info">
+                <i class="fa fa-lg fa-anchor"></i> {{puntoBiciNoFavs.anclajesLibres}}
+              </span>
+            </div>
+          </div>
+        </button>
+      </h5>
+    </div>
+
+    <div id="pbCollapse{{puntoBiciNoFavs.id}}"
+    class="collapse hide"
+    [attr.aria-labelledby]="'pbHeading'+puntoBiciNoFavs.id"
+    data-parent="#accordion">
+      <div class="card-body">
+        <div class="row justify-content-around">
+          <div class="btn" (click)="toggleFav(puntoBiciNoFavs.id)">
+            <div class="row justify-content-center" *ngIf="favoritos.indexOf(puntoBiciNoFavs.id)>=0">
+              <i class="fas fa-star faved"></i>
+            </div>
+            <div class="row justify-content-center" *ngIf="favoritos.indexOf(puntoBiciNoFavs.id)<0">
+              <i class="far fa-star"></i>
+            </div>
+            <div class="row justify-content-center">
+              Favorito
+            </div>
+          </div>
+          <div class="btn" [routerLink]="['/detalle', puntoBiciNoFavs.id]">
+            <div class="row justify-content-center">
+              <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="row justify-content-center">
+              Detalles
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

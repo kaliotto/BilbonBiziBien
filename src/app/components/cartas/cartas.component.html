@@ -1,0 +1,32 @@
+<div class="card-group">
+  <div class="col-md-4" *ngFor="let puntoBici of puntosBici">
+    <div class="card">
+      <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+      <div id="mapa{{puntoBici.id}}">
+        <agm-map class="card-img-top"
+          [latitude]="puntoBici.latitud"
+          [longitude]="puntoBici.longitud"
+          [zoom]="16">
+          <agm-marker [latitude]="puntoBici.latitud" [longitude]="puntoBici.longitud"></agm-marker>
+        </agm-map>
+      </div>
+      <div class="card-img-top" id="{{puntoBici.nombre}}">
+
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{puntoBici.nombre}}</h5>
+        <span>ANCLAJES</span>
+        <ul class="list-inline">
+          <li class="list-inline-item">Libres: {{puntoBici.anclajesLibres}}</li>
+          <li class="list-inline-item">Usados: {{puntoBici.anclajesUsados}}</li>
+          <li class="list-inline-item">Averiados: {{puntoBici.anclajesAveriados}}</li>
+        </ul>
+        <span>BICIS</span>
+        <ul class="list-inline">
+          <li class="list-inline-item">Libres: {{puntoBici.bicisLibres}}</li>
+          <li class="list-inline-item">Averiadas: {{puntoBici.bicisAveriadas}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

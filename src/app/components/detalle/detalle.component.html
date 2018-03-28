@@ -1,0 +1,67 @@
+<div class="loading" *ngIf="loading">
+  <img class="fa-spin" src="../../../assets/img/loading.png" alt="">
+</div>
+<div class="container" *ngIf="!loading">
+  <div class="card text-center">
+    <!-- <img class="card-img-top" src="../../../assets/img/imgdummy.jpg" alt=""> -->
+    <agm-map class="card-img-top mapaDetalle"
+      [latitude]="pb.latitud"
+      [longitude]="pb.longitud"
+      [zoom]="16">
+      <agm-marker [latitude]="pb.latitud" [longitude]="pb.longitud"></agm-marker>
+    </agm-map>
+    <div class="card-body">
+      <h5 class="card-title">{{pb.nombre}}</h5>
+      <p class="card-text" *ngIf="direccion">{{direccion}}</p>
+      <div class="text-center" *ngIf="loading">
+        <i class="fas fa-cog fa-spin"></i> Cargando dirección...
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card-header noBottomBorder">
+            Bibicletas
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Libres
+              <span class="badge badge-success badge-pill">
+                <i class="fa fa-lg fa-bicycle"></i> {{pb.bicisLibres || 0}}
+              </span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Averiadas
+              <span class="badge badge-warning badge-pill">
+                <i class="fa fa-lg fa-bicycle"></i> {{pb.bicisAveriadas || 0}}
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <div class="card-header noBottomBorder">
+            Anclajes
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Libres
+              <span class="badge badge-success badge-pill">
+                <i class="fa fa-lg fa-anchor"></i> {{pb.anclajesLibres || 0}}
+              </span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Usados
+              <span class="badge badge-danger badge-pill">
+                <i class="fa fa-lg fa-anchor"></i> {{pb.anclajesUsados || 0}}
+              </span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Averiados
+              <span class="badge badge-warning badge-pill">
+                <i class="fa fa-lg fa-anchor"></i> {{pb.anclajesAveriados || 0}}
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
