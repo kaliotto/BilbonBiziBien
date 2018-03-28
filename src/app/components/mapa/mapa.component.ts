@@ -31,4 +31,11 @@ export class MapaComponent {
     let auxMkr = this.marcadores.find(x => x.id == id);
     auxMkr.visible = !auxMkr.visible;
   }
+
+  selectAll() {
+    this.marcadores.forEach(x => x.visible = true);
+  }
+  selectNone() {
+    this.marcadores.forEach(x => x.visible = false);
+  }
 }

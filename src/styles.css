@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  color: rgb(255, 0, 0, 0.5) !important;
+}
+
 agm-map{
   height: 300px;
 }
@@ -11,14 +15,52 @@ mapa{
   height: 600px;
 }
 
+.seleccionar{
+  font-size: 10px;
+  /* margin-left: 10px; */
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.todos{
+  color: rgb(0, 140, 0, 0.5);
+}
+
+.ninguno{
+  color: rgb(255, 0, 0, 0.5);
+}
+
+.todos:hover{
+  background-color: rgb(0, 140, 0, 0.5);
+  border-radius: 10px;
+  color: white;
+}
+
+.ninguno:hover{
+  background-color: rgb(255, 0, 0, 0.5);
+  border-radius: 10px;
+  color: white;
+}
+
 .listaMarcadores{
   border: 0 !important;
   text-align: left !important;
+  color: rgb(255, 0, 0, 0.5) !important;
+}
+
+.listaMarcadores:hover{
+  background-color: rgb(255, 0, 0, 0.5) !important;
+  color: white !important;
 }
 
 .collapsible-btn{
   text-decoration: none !important;
-  color:inherit !important;
+  color: rgb(255, 0, 0, 0.5) !important;
+}
+
+.btn-faved .collapsible-btn{
+  text-decoration: none !important;
+  color: white !important;
 }
 
 .text-align-left{
@@ -34,11 +76,8 @@ mapa{
 }
 
 .btn-faved{
-  background-color: rgba(244, 223, 66, 0.3) !important;
-}
-
-.faved{
-  color: #f4df42;
+  background-color: rgb(255, 0, 0, 0.5) !important;
+  color: white !important;
 }
 
 .noBottomBorder {
@@ -58,6 +97,21 @@ mapa{
   right: 0;
 }
 
+.btn-faved .numRedondo{
+  display: inline;
+  width: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 16px;
+  padding: 6px 4px 8px 9px;
+  margin-right: 5px;
+  background-color: white !important;
+  /* background-color: rgb(249, 37, 37, 0.7); */
+  color: rgb(255, 0, 0, 0.5) !important;
+  font-weight: bold;
+}
+
 .numRedondo{
   display: inline;
   width: 60px;
@@ -67,7 +121,8 @@ mapa{
   font-size: 16px;
   padding: 6px 4px 8px 9px;
   margin-right: 5px;
-  background-color: rgb(244, 176, 66, 0.7);
+  background-color: rgb(255, 0, 0, 0.5) !important;
+  /* background-color: rgb(249, 37, 37, 0.7); */
   color: white;
   font-weight: bold;
 }
@@ -113,11 +168,11 @@ mapa{
 }
 
 input:checked + .slider {
-  background-color: red;
+  background-color: rgb(255, 0, 0, 0.5);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px red;
+  box-shadow: 0 0 1px rgb(255, 0, 0, 0.5);
 }
 
 input:checked + .slider:before {

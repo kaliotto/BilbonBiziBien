@@ -20,7 +20,10 @@
       </div>
     </agm-map>
     <div class="card-body">
-      <h5 class="card-title">Listado de Puntos Bilbon Bizi</h5>
+      <h5 class="card-title">Listado de Puntos Bilbon Bizi
+        <span class="seleccionar todos" (click)="selectAll()">Todos</span>
+        <span class="seleccionar ninguno" (click)="selectNone()">Ninguno</span>
+      </h5>
         <div class="row">
             <div class="col-md-6 list-group-item list-group-item-action listaMarcadores d-flex justify-content-between" *ngFor="let mkr of marcadores">
               {{mkr.nombre}}
