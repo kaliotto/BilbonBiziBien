@@ -12,16 +12,18 @@ export class PuntosBiciService {
   }
 
   getPuntosBici() {
-    let url = "http://www.bilbao.eus/WebServicesBilbao/WSBilbao?s=ODPRESBICI&u=OPENDATA&p0=A&p1=A";
+    let url = "https://www.bilbao.eus/WebServicesBilbao/WSBilbao?s=ODPRESBICI&u=OPENDATA&p0=A&p1=A";
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
     return this._http.get(proxyurl + url)
+      //return this._http.get(url)
       .map(res => {
-        this.puntosBici = PuntoBici.mapear(xmlToJSON.parseString(res.text()).RESPUESTA[0].LISTA[0].DETALLE).sort((x, y) => {
-          return y.posicion < x.posicion ? 1 // if y should come earlier, push x to end
-            : y.posicion > x.posicion ? -1 // if y should come later, push x to begin
-              : 0;
-        });
+        this.puntosBici = PuntoBici.mapear(
+          xmlToJSON.parseString(res.text()).RESPUESTA[0].LISTA[0].DETALLE).sort((x, y) => {
+            return y.posicion < x.posicion ? 1 // if y should come earlier, push x to end
+              : y.posicion > x.posicion ? -1 // if y should come later, push x to begin
+                : 0;
+          });
         return this.puntosBici;
       });
   }
@@ -40,23 +42,4 @@ export class PuntosBiciService {
         return `${dirForm.calle}, ${dirForm.numero} (${dirForm.cp})`
       });
   }
-
-  // getPuntoBiciById(id: number): any {
-  //   if (!this.puntosBici || this.puntosBici.length == 0) {
-  //     this.getPuntosBici().subscribe(data => {
-  //       this.puntosBici = data;
-  //       data.map(res => {
-  //         if (res.id == id) {
-  //           return res;
-  //         }
-  //       });
-  //       // let aux = data.find(pb => pb.id == id).map(res==>return res;);
-  //       // return aux;
-  //     });
-  //   } else {
-  //     this.puntosBici.map(res => res.id == id);
-  //     // let aux = this.puntosBici.find(pb => pb.id == id);
-  //     // return aux;
-  //   }
-  // }
 }

@@ -23,16 +23,6 @@ export class DetalleComponent {
         }).subscribe(data => this.direccion = data);
         this.loading = false;
       });
-
-      // for (let i = 0; i < this.puntosBici.length; i++) {
-      //   let aux = `
-      //   <agm-map class="card-img-top" [latitude]="puntoBici.latitud" [longitude]="puntoBici.longitud">
-      //     <agm-marker [latitude]="puntoBici.latitud" [longitude]="puntoBici.longitud"></agm-marker>
-      //   </agm-map>
-      //   `;
-      //   let el = document.getElementById("mapa" + this.puntosBici[i].id.toString());
-      //   el.innerText = aux;
-      // }
     });
   }
 }

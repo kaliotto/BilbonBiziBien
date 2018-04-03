@@ -20,19 +20,38 @@
       </div>
     </agm-map>
     <div class="card-body">
-      <h5 class="card-title">Listado de Puntos Bilbon Bizi
+      <div class="row justify-content-between">
+        <div class="col-md-8">
+          <h5 class="marginZero text-align-left h5title">Listado de Puntos Bilbon Bizi</h5>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group mb-3">
+            <input type="text"
+            #busq
+            class="form-control"
+            aria-label="Buscar punto"
+            (keyup)="buscar(busq.value.toLowerCase())">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="marginZero">
         <span class="seleccionar todos" (click)="selectAll()">Todos</span>
         <span class="seleccionar ninguno" (click)="selectNone()">Ninguno</span>
-      </h5>
-        <div class="row">
-            <div class="col-md-6 list-group-item list-group-item-action listaMarcadores d-flex justify-content-between" *ngFor="let mkr of marcadores">
-              {{mkr.nombre}}
-              <label class="switch">
-                <input [checked]="mkr.visible" type="checkbox" (click)="toggleVisibility(mkr.id)">
-                <span class="slider round"></span>
-              </label>
-            </div>
-        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6 list-group-item list-group-item-action listaMarcadores d-flex justify-content-between" *ngFor="let mkr of marcadores">
+            {{mkr.nombre}}
+            <label class="switch">
+              <input [checked]="mkr.visible" type="checkbox" (click)="toggleVisibility(mkr.id)">
+              <span class="slider round"></span>
+            </label>
+          </div>
+      </div>
     </div>
   </div>
 </div>
