@@ -38,4 +38,17 @@ export class PuntoBici {
 
     return res;
   }
+
+  static actualizarDatos(lista: PuntoBici[], datosNuevos: PuntoBici[]): PuntoBici[] {
+    lista.forEach(pbOld => {
+      let pbNew = datosNuevos.find(x => x.id == pbOld.id);
+      pbOld.anclajesAveriados = pbNew.anclajesAveriados;
+      pbOld.anclajesLibres = pbNew.anclajesLibres;
+      pbOld.anclajesUsados = pbNew.anclajesUsados;
+      pbOld.bicisLibres = pbNew.bicisLibres;
+      pbOld.bicisAveriadas = pbNew.bicisAveriadas;
+    })
+
+    return lista;
+  }
 }

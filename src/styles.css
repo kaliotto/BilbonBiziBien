@@ -148,6 +148,10 @@ input.form-control:focus{
   line-height: 2;
 }
 
+.marginLeft5{
+  margin-left: 5px;
+}
+
 /* ----------------------------------------------------- */
 /* TOGGLE DE MARCADORES - MAPA */
 /* The switch - the box around the slider */

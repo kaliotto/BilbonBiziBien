@@ -8,19 +8,28 @@ import { PuntoBici } from '../../classes/punto-bici';
 })
 export class HomeComponent {
   loading: boolean = true;
+  refreshing: boolean = false;
   puntosBici: PuntoBici[];
   puntosBiciFavs: PuntoBici[];
   puntosBiciNoFavs: PuntoBici[];
   favoritos: number[] = JSON.parse(localStorage.getItem("favoritosBBB")) || [];
 
   constructor(private _pbs: PuntosBiciService) {
-
-    this._pbs.getPuntosBici().subscribe(data => {
-      this.puntosBici = data;
-      this.puntosBiciFavs = data.filter(pb => this.favoritos.indexOf(pb.id) >= 0);
-      this.puntosBiciNoFavs = data.filter(pb => this.favoritos.indexOf(pb.id) < 0);
+    if (localStorage.getItem("puntosBici")) {
+      this.puntosBici = JSON.parse(localStorage.getItem("puntosBici"));
+      this.puntosBiciFavs = this.puntosBici.filter(pb => this.favoritos.indexOf(pb.id) >= 0);
+      this.puntosBiciNoFavs = this.puntosBici.filter(pb => this.favoritos.indexOf(pb.id) < 0);
       this.loading = false;
-    });
+      this.actualizarDatos();
+    } else {
+      this._pbs.getPuntosBici().subscribe(data => {
+        this.puntosBici = data;
+        localStorage.setItem("puntosBici", JSON.stringify(this.puntosBici));
+        this.puntosBiciFavs = data.filter(pb => this.favoritos.indexOf(pb.id) >= 0);
+        this.puntosBiciNoFavs = data.filter(pb => this.favoritos.indexOf(pb.id) < 0);
+        this.loading = false;
+      });
+    }
   }
 
   toggleFav(id: number) {
@@ -45,5 +54,13 @@ export class HomeComponent {
       this.puntosBiciFavs = this.puntosBici.filter(pb => this.favoritos.indexOf(pb.id) >= 0);
       this.puntosBiciNoFavs = this.puntosBici.filter(pb => this.favoritos.indexOf(pb.id) < 0);
     }
+  }
+
+  actualizarDatos() {
+    this.refreshing = true;
+    this._pbs.getPuntosBici().subscribe(data => {
+      this.puntosBici = PuntoBici.actualizarDatos(this.puntosBici, <PuntoBici[]>data);
+      this.refreshing = false;
+    });
   }
 }

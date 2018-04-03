@@ -18,6 +18,11 @@
               <i class="fas fa-search"></i>
             </span>
           </div>
+          <div class="input-group-append" (click)="actualizarDatos()">
+            <span class="input-group-text">
+              <i class="fas fa-sync-alt"></i>
+            </span>
+          </div>
       </div>
     </div>
   </div>
@@ -39,11 +44,17 @@
                 <span>{{puntoBiciFavs.nombre}}</span>
               </div>
               <div class="col-6 text-align-right">
-                <span class="badge badge-pill badge-success">
+                <span class="badge badge-pill badge-success" *ngIf="!refreshing">
                   <i class="fa fa-lg fa-bicycle"></i> {{puntoBiciFavs.bicisLibres}}
                 </span>
-                <span class="badge badge-pill badge-info">
+                <span class="badge badge-pill badge-info" *ngIf="!refreshing">
                   <i class="fa fa-lg fa-anchor"></i> {{puntoBiciFavs.anclajesLibres}}
+                </span>
+                <span class="badge badge-pill badge-success" *ngIf="refreshing">
+                  <i class="fa fa-lg fa-bicycle"></i><i class="fas fa-spinner fa-spin marginLeft5"></i>
+                </span>
+                <span class="badge badge-pill badge-info" *ngIf="refreshing">
+                  <i class="fa fa-lg fa-anchor"></i><i class="fas fa-spinner fa-spin marginLeft5"></i>
                 </span>
               </div>
             </div>
@@ -98,11 +109,17 @@
                 <span>{{puntoBiciNoFavs.nombre}}</span>
               </div>
               <div class="col-6 text-align-right">
-                <span class="badge badge-pill badge-success">
+                <span class="badge badge-pill badge-success" *ngIf="!refreshing">
                   <i class="fa fa-lg fa-bicycle"></i> {{puntoBiciNoFavs.bicisLibres}}
                 </span>
-                <span class="badge badge-pill badge-info">
+                <span class="badge badge-pill badge-info" *ngIf="!refreshing">
                   <i class="fa fa-lg fa-anchor"></i> {{puntoBiciNoFavs.anclajesLibres}}
+                </span>
+                <span class="badge badge-pill badge-success" *ngIf="refreshing">
+                  <i class="fa fa-lg fa-bicycle"></i><i class="fas fa-spinner fa-spin marginLeft5"></i>
+                </span>
+                <span class="badge badge-pill badge-info" *ngIf="refreshing">
+                  <i class="fa fa-lg fa-anchor"></i><i class="fas fa-spinner fa-spin marginLeft5"></i>
                 </span>
               </div>
             </div>
