@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from "@angular/http";
 import { PuntoBici } from '../classes/punto-bici';
 import 'rxjs/Rx';
-// import * as xmlToJSON from 'xmlToJSON';
+import * as xmlToJSON from 'xmlToJSON';
 
 @Injectable()
 export class PuntosBiciService {
@@ -12,7 +12,6 @@ export class PuntosBiciService {
   }
 
   getPuntosBici() {
-    let x2j = require('xmlToJSON');
     let url = "https://www.bilbao.eus/WebServicesBilbao/WSBilbao?s=ODPRESBICI&u=OPENDATA&p0=A&p1=A";
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
@@ -20,7 +19,7 @@ export class PuntosBiciService {
       //return this._http.get(url)
       .map(res => {
         this.puntosBici = PuntoBici.mapear(
-          x2j.parseString(res.text()).RESPUESTA[0].LISTA[0].DETALLE).sort((x, y) => {
+          xmlToJSON.parseString(res.text()).RESPUESTA[0].LISTA[0].DETALLE).sort((x, y) => {
             return y.posicion < x.posicion ? 1 // if y should come earlier, push x to end
               : y.posicion > x.posicion ? -1 // if y should come later, push x to begin
                 : 0;
