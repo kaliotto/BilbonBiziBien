@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from "@angular/http";
 import { PuntoBici } from '../classes/punto-bici';
 import 'rxjs/Rx';
-import * as xmlToJSON from 'xmlToJSON';
+import * as xmlToJSON from 'xmltojson';
 
 @Injectable()
 export class PuntosBiciService {
