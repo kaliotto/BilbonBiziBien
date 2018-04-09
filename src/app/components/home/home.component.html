@@ -1,7 +1,7 @@
 <div class="loading" *ngIf="loading">
   <img class="fa-spin" src="../../../assets/img/loading.png" alt="">
 </div>
-<div class="container-fluid marginTop" *ngIf="!loading">
+<div class="container-fluid marginTop paddingBot" *ngIf="!loading">
   <div class="row">
     <div class="col-md-6">
       <h5 class="marginZero text-align-left h5title">Listado de Puntos Bilbon Bizi:</h5>
@@ -37,13 +37,13 @@
           aria-expanded="true"
           [attr.aria-controls]="'pbCollapse'+puntoBiciFavs.id">
             <div class="row justify-content-between">
-              <div class="col-6 text-align-left">
+              <div class="col-md-6 col-xs-12 text-align-left">
                 <div class="numRedondo">
                   <span *ngIf="puntoBiciFavs.posicion-10<0">0</span>{{puntoBiciFavs.posicion}}
                 </div>
                 <span>{{puntoBiciFavs.nombre}}</span>
               </div>
-              <div class="col-6 text-align-right">
+              <div class="col-md-6 col-xs-12 text-align-right">
                 <span class="badge badge-pill badge-success" *ngIf="!refreshing">
                   <i class="fa fa-lg fa-bicycle"></i> {{puntoBiciFavs.bicisLibres}}
                 </span>
@@ -102,13 +102,13 @@
           aria-expanded="true"
           [attr.aria-controls]="'pbCollapse'+puntoBiciNoFavs.id">
             <div class="row justify-content-between">
-              <div class="col-6 text-align-left">
+              <div class="col-md-6 col-xs-12 text-align-left">
                 <div class="numRedondo">
                   <span *ngIf="puntoBiciNoFavs.posicion-10<0">0</span>{{puntoBiciNoFavs.posicion}}
                 </div>
                 <span>{{puntoBiciNoFavs.nombre}}</span>
               </div>
-              <div class="col-6 text-align-right">
+              <div class="col-md-6 col-xs-12 text-align-right">
                 <span class="badge badge-pill badge-success" *ngIf="!refreshing">
                   <i class="fa fa-lg fa-bicycle"></i> {{puntoBiciNoFavs.bicisLibres}}
                 </span>

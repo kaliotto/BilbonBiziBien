@@ -152,6 +152,18 @@ input.form-control:focus{
   margin-left: 5px;
 }
 
+.paddingBot{
+  padding-bottom: 50px;
+}
+
+.paddingTop{
+  padding-top: 30px;
+}
+
+.marginBot{
+  margin-bottom: 30px;
+}
+
 /* ----------------------------------------------------- */
 /* TOGGLE DE MARCADORES - MAPA */
 /* The switch - the box around the slider */
